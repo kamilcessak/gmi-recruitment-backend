@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Patch, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { Prisma } from '@prisma/client';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -18,7 +18,7 @@ export class TasksController {
     return this.taskService.deleteTask(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   async updateTask(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
     return this.taskService.updateTask(+id, updateTaskDto);
   }
